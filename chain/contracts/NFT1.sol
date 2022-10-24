@@ -4,7 +4,7 @@ pragma solidity ^0.8.9;
 import '@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol';
 import '@openzeppelin/contracts/utils/Counters.sol';
 
-contract NFT is ERC721URIStorage {
+contract NFT1 is ERC721URIStorage {
   using Counters for Counters.Counter;
   Counters.Counter public _tokenIds;
   Counters.Counter private _tokensSold;

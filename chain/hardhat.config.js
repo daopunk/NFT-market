@@ -8,5 +8,9 @@ module.exports = {
       url: process.env.ALCHEMY_MUMBAI,
       accounts: [process.env.PRI_KEY],
     },
+    goerli: {
+      url: process.env.ALCHEMY_GOERLI,
+      accounts: [process.env.PRI_KEY],
+    },
   },
 };

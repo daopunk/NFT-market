@@ -29,7 +29,7 @@ contract NFT2 is ERC721URIStorage {
     'DAOist ',
     'Anarchist ',
     'Corporate Suit ',
-    'Founder',
+    'Founder ',
     'Intellectual ',
     'Dropout '
   ];
@@ -42,6 +42,8 @@ contract NFT2 is ERC721URIStorage {
     'Orwellian Dystopia',
     'Crypto Democracy'
   ];
+
+  event NftMinted(address minter, uint256 tokenId);
 
   constructor(address _nftMarketContract) ERC721('Futuro', 'FTR') {
     nftMarketContract = _nftMarketContract;
@@ -115,6 +117,8 @@ contract NFT2 is ERC721URIStorage {
     string memory finalTokenUri = string(
       abi.encodePacked('data:application/json;base64,', json)
     );
+
+    emit NftMinted(msg.sender, newItemId);
 
     _safeMint(msg.sender, newItemId);
     _setTokenURI(newItemId, finalTokenUri);

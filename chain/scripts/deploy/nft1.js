@@ -1,14 +1,14 @@
 require('dotenv').config();
-// npx hardhat run scripts/deploy/nft1.js --network goerli
+// npx hardhat run scripts/deploy/nft1.js --network mumbai
 
 async function main() {
   const nftMarket = await ethers.getContractAt(
     'NftMarket',
-    process.env.NFT_MARKET
+    process.env.NFT_MARKET_MUMBAI
   );
 
   const nftContractFactory = await ethers.getContractFactory('NFT1');
-  const nftContract = await nftContractFactory.deployed(
+  const nftContract = await nftContractFactory.deploy(
     nftMarket.address,
     'CipherPunx',
     'CPX'

@@ -1,4 +1,4 @@
-// npx hardhat run scripts/deploy/market.js --network goerli
+// npx hardhat run scripts/deploy/market.js --network mumbai
 
 async function main() {
   const NftMarketContract = await ethers.getContractFactory('NftMarket');

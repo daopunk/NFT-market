@@ -7,9 +7,10 @@ import '@openzeppelin/contracts/utils/Counters.sol';
 contract NFT1 is ERC721URIStorage {
   using Counters for Counters.Counter;
   Counters.Counter public _tokenIds;
-  Counters.Counter private _tokensSold;
 
   address nftMarketContract;
+
+  event NftMinted(address minter, uint256 tokenId);
 
   constructor(
     address _nftMarketContract,
@@ -19,13 +20,13 @@ contract NFT1 is ERC721URIStorage {
     nftMarketContract = _nftMarketContract;
   }
 
-  function mintToken(string memory tokenURI) public returns (uint256) {
-    _tokenIds.increment();
-    uint256 newId = _tokenIds.current();
-    _mint(msg.sender, newId);
-    _setTokenURI(newId, tokenURI);
+  function mintToken(string memory tokenURI) public {
+    uint256 newItemId = _tokenIds.current();
+    emit NftMinted(msg.sender, newItemId);
+    _safeMint(msg.sender, newItemId);
+    _setTokenURI(newItemId, tokenURI);
     setApprovalForAll(nftMarketContract, true);
-    return newId;
+    _tokenIds.increment();
   }
 
   function getTokenId() external view returns (uint256) {

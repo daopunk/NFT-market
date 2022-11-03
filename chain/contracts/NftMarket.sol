@@ -7,7 +7,7 @@ import '@openzeppelin/contracts/token/ERC721/ERC721.sol';
 import '@openzeppelin/contracts/security/ReentrancyGuard.sol';
 import '@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol';
 
-contract NftMarket2 is ReentrancyGuard {
+contract NftMarket is ReentrancyGuard {
   address payable owner;
 
   struct onSaleNFT {

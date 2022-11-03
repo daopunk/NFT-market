@@ -6,7 +6,7 @@ import '@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol';
 import '@openzeppelin/contracts/utils/Counters.sol';
 import {Base64} from './lib/Base64.sol';
 
-contract NFT2 is ERC721URIStorage {
+contract NFT_SVG is ERC721URIStorage {
   using Counters for Counters.Counter;
   Counters.Counter private _tokenIds;
 

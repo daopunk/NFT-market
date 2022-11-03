@@ -9,12 +9,12 @@ describe('NFT Market', function () {
     [deployer, u1, u2, u3, u4] = await ethers.getSigners();
     users = [u1.address, u2.address, u3.address, u4.address];
 
-    const NftMarketContract = await ethers.getContractFactory('NftMarket2');
+    const NftMarketContract = await ethers.getContractFactory('NftMarket');
     nftMarket = await NftMarketContract.connect(u4).deploy();
     await nftMarket.connect(u4).deployed();
     addr = nftMarket.address;
 
-    const NftContract = await ethers.getContractFactory('NFT2');
+    const NftContract = await ethers.getContractFactory('NFT_SVG');
     nft = await NftContract.connect(u3).deploy(addr);
     await nft.connect(u3).deployed();
 
@@ -94,7 +94,6 @@ describe('NFT Market', function () {
       .connect(u1)
       .fetchUserNFTsByCollection(nft.address);
 
-    console.log(userNFTs);
     expect(userNFTs[0].owner).to.equal(users[0]);
     expect(userNFTs[1].owner).to.equal(users[0]);
     expect(userNFTs[2].owner).to.equal(users[0]);

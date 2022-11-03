@@ -1,7 +1,7 @@
 require('@nomicfoundation/hardhat-toolbox');
 require('@nomiclabs/hardhat-etherscan');
 require('dotenv').config();
-// npx hardhat verify --network mumbai ADDRESS
+// npx hardhat verify ADDRESS --network mumbai
 
 module.exports = {
   solidity: '0.8.9',

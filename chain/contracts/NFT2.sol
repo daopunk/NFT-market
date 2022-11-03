@@ -90,10 +90,11 @@ contract NFT2 is ERC721URIStorage {
   }
 
   function mintFTR() public {
-    uint256 newItemId = _tokenIds.current();
-    string memory city = pickRandomCityWord(newItemId);
-    string memory job = pickRandomJobWord(newItemId);
-    string memory social = pickRandomSocialWord(newItemId);
+    _tokenIds.increment();
+    uint256 newTokenId = _tokenIds.current();
+    string memory city = pickRandomCityWord(newTokenId);
+    string memory job = pickRandomJobWord(newTokenId);
+    string memory social = pickRandomSocialWord(newTokenId);
     string memory combinedWord = string(abi.encodePacked(city, job, social));
 
     string memory finalSvg = string(
@@ -118,10 +119,14 @@ contract NFT2 is ERC721URIStorage {
       abi.encodePacked('data:application/json;base64,', json)
     );
 
-    emit NftMinted(msg.sender, newItemId);
+    emit NftMinted(msg.sender, newTokenId);
 
-    _safeMint(msg.sender, newItemId);
-    _setTokenURI(newItemId, finalTokenUri);
-    _tokenIds.increment();
+    _safeMint(msg.sender, newTokenId);
+    _setTokenURI(newTokenId, finalTokenUri);
+    setApprovalForAll(nftMarketContract, true);
+  }
+
+  function getTokenId() external view returns (uint256) {
+    return _tokenIds.current();
   }
 }

@@ -7,8 +7,12 @@ const main = async () => {
     process.env.NFT_CONTRACT2_MUMBAI
   );
 
-  let tx = await nftContract.mintFTR();
-  await tx.wait();
+  for (let i = 0; i < 3; i++) {
+    let tx = await nftContract.mintFTR();
+    await tx.wait();
+  }
+
+  console.log('3 tokens minted');
 };
 
 main().catch((error) => {

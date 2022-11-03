@@ -3,7 +3,7 @@ require('dotenv').config();
 
 async function main() {
   const nftMarket = await ethers.getContractAt(
-    'NftMarket',
+    'NftMarket2',
     process.env.NFT_MARKET_MUMBAI
   );
 

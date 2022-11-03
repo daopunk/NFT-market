@@ -1,10 +1,10 @@
 require('dotenv').config();
-// npx hardhat run scripts/mint/nft1.js --network mumbai
+// npx hardhat run scripts/mint/nft-uri.js --network mumbai
 
 const main = async () => {
   const nftContract = await hre.ethers.getContractAt(
-    'NFT1',
-    process.env.NFT_CONTRACT1
+    'NFT_TokenURI',
+    process.env.NFT_URI_MUMBAI
   );
 
   console.log(process.env.TOKEN_URI);

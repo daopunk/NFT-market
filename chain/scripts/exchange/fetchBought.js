@@ -3,11 +3,11 @@ require('dotenv').config();
 
 const main = async () => {
   const market = await hre.ethers.getContractAt(
-    'NftMarket2',
+    'NftMarket',
     process.env.NFT_MARKET_MUMBAI
   );
 
-  const tx = await market.fetchUserNFTs(process.env.NFT_MARKET_MUMBAI);
+  const tx = await market.fetchUserNFTsByCollection(process.env.NFT_SVG_MUMBAI);
   console.log(tx);
 };
 

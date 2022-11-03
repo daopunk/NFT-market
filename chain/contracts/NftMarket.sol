@@ -86,7 +86,7 @@ contract NftMarket is ReentrancyGuard {
     nft.onSale = false;
     currStockByCollection[nftContract] -= 1;
 
-    IERC721(nftContract).transferFrom(address(this), msg.sender, tokenId);
+    IERC721(nftContract).safeTransferFrom(address(this), msg.sender, tokenId);
   }
 
   function fetchOnSaleNFTsByCollection(address nftContract)

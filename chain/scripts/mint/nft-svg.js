@@ -1,10 +1,10 @@
 require('dotenv').config();
-// npx hardhat run scripts/mint/nft2.js --network mumbai
+// npx hardhat run scripts/mint/nft-svg.js --network mumbai
 
 const main = async () => {
   const nftContract = await hre.ethers.getContractAt(
-    'NFT2',
-    process.env.NFT_CONTRACT2_MUMBAI
+    'NFT_SVG',
+    process.env.NFT_SVG_MUMBAI
   );
 
   for (let i = 0; i < 3; i++) {

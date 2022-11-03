@@ -1,13 +1,13 @@
 require('dotenv').config();
-// npx hardhat run scripts/deploy/nft2.js --network mumbai
+// npx hardhat run scripts/deploy/nft-svg.js --network mumbai
 
 async function main() {
   const nftMarket = await ethers.getContractAt(
-    'NftMarket2',
+    'NftMarket',
     process.env.NFT_MARKET_MUMBAI
   );
 
-  const nftContractFactory = await ethers.getContractFactory('NFT2');
+  const nftContractFactory = await ethers.getContractFactory('NFT_SVG');
   const nftContract = await nftContractFactory.deploy(nftMarket.address);
   await nftContract.deployed();
   console.log(`\nNFT2 Contract deployed: ${nftContract.address}`);

@@ -4,17 +4,15 @@ require('dotenv').config();
 
 const main = async () => {
   const market = await hre.ethers.getContractAt(
-    'NftMarket2',
+    'NftMarket',
     process.env.NFT_MARKET_MUMBAI
   );
 
-  const tokenId = 0;
+  const tokenId = 1;
 
-  let tx = await market.buyOnSaleNFT(
-    process.env.NFT_CONTRACT2_MUMBAI,
-    tokenId,
-    { value: ethers.utils.parseEther('0.05') }
-  );
+  let tx = await market.buyOnSaleNFT(process.env.NFT_SVG_MUMBAI, tokenId, {
+    value: ethers.utils.parseEther('0.05'),
+  });
   await tx.wait();
 
   console.log('buy complete');

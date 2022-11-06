@@ -1,9 +1,11 @@
-import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
-import { chain, configureChains, createClient, WagmiConfig } from "wagmi";
-import { alchemyProvider } from "wagmi/providers/alchemy";
-import { publicProvider } from "wagmi/providers/public";
-import "@rainbow-me/rainbowkit/styles.css";
-import "../styles/globals.css";
+import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { ChakraProvider } from '@chakra-ui/react';
+import { chain, configureChains, createClient, WagmiConfig } from 'wagmi';
+import { alchemyProvider } from 'wagmi/providers/alchemy';
+import { publicProvider } from 'wagmi/providers/public';
+import '@rainbow-me/rainbowkit/styles.css';
+import '../styles/globals.css';
+import theme from './lib/theme';
 
 const { chains, provider } = configureChains(
   [chain.mainnet, chain.polygonMumbai, chain.goerli],
@@ -11,7 +13,7 @@ const { chains, provider } = configureChains(
 );
 
 const { connectors } = getDefaultWallets({
-  appName: "NFT Market DApp",
+  appName: 'NFT Market dApp',
   chains,
 });
 
@@ -23,11 +25,13 @@ const wagmiClient = createClient({
 
 const App = ({ Component, pageProps }) => {
   return (
-    <WagmiConfig client={wagmiClient}>
-      <RainbowKitProvider chains={chains}>
-        <Component {...pageProps} />
-      </RainbowKitProvider>
-    </WagmiConfig>
+    <ChakraProvider theme={theme}>
+      <WagmiConfig client={wagmiClient}>
+        <RainbowKitProvider chains={chains}>
+          <Component {...pageProps} />
+        </RainbowKitProvider>
+      </WagmiConfig>
+    </ChakraProvider>
   );
 };
 

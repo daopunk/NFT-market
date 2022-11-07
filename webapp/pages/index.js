@@ -5,13 +5,12 @@ import Navbar from './components/Navbar';
 import Meta from './components/Meta';
 
 const Home = () => {
-  // const provider = useProvider();
   const account = useAccount();
   const { toggleColorMode, colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
 
   return (
-    <VStack height="100vh">
+    <VStack h="100vh">
       <Meta />
       <Navbar account={account} darkMode={isDark} toggle={toggleColorMode} />
     </VStack>

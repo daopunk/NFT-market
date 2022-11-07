@@ -29,7 +29,7 @@ const Navbar = ({ account, darkMode, toggle }) => {
       <Spacer />
       <HStack>
         {routes.map((route) => (
-          <NavBtn name={route} />
+          <NavBtn name={route} key={route} />
         ))}
       </HStack>
       <Spacer />

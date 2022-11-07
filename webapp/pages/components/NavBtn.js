@@ -12,6 +12,7 @@ const NavBtn = ({ name, currRoute }) => {
         fontSize="22"
         fontWeight="bold"
         color={highlight ? 'lime' : ''}
+        key={name}
       >
         {name ? name : 'Home'}
       </Text>

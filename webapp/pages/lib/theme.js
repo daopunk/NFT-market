@@ -17,6 +17,11 @@ const theme = extendTheme({
   initialColorMode: 'dark',
   useSystemColorMode: false,
   components: {
+    Input: {
+      defaultProps: {
+        focusBorderColor: 'purple.500',
+      },
+    },
     Button: {
       variants: {
         link: {

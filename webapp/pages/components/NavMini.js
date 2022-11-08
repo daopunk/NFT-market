@@ -6,7 +6,7 @@ import { SiStarship } from 'react-icons/si';
 import NavBtn from './NavBtn';
 
 const NavMini = ({ currRoute }) => {
-  const routes = ['Mint', 'Explore', 'About'];
+  const routes = ['Mint', 'Sell', 'About'];
 
   return (
     <Flex p="2" width="100%">

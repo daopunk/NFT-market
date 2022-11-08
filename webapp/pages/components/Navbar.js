@@ -8,7 +8,7 @@ import NavBtn from './NavBtn';
 
 const Navbar = ({ account, darkMode, toggle }) => {
   const bgcolor = darkMode ? 'gray.900' : 'gray.300';
-  const routes = ['Mint', 'Explore', 'About'];
+  const routes = ['Mint', 'Sell', 'About'];
 
   return (
     <Flex p="2" width="100%" bgColor={bgcolor}>

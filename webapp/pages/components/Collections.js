@@ -49,9 +49,9 @@ const Collections = () => {
       });
       await tx.wait();
       console.log(tx);
-      setLoading(false);
       getUserCollection();
       getOnSaleCollection();
+      setLoading(false);
     } catch (error) {
       console.log(`Collection Load Error: ${error}`);
     }
@@ -83,26 +83,29 @@ const Collections = () => {
         ))}
       </Grid>
       <Text fontWeight="bold">On-Sale NFTs:</Text>
-      {loading && <Text>Your Transaction is Being Processed</Text>}
-      <Grid templateColumns="repeat(3, 1fr)" gap={6}>
-        {onSaleNfts.map((item) => (
-          <GridItem w="100%" h="100%" border="1px" p="2">
-            <Text>{item.id._hex}</Text>
-            <Text>{item.vender.slice(0, 10)}</Text>
-            <Text>{ethers.utils.formatEther(item.price._hex)}</Text>
-            <Button
-              onClick={() =>
-                handleBuy(
-                  item.id._hex,
-                  ethers.utils.formatEther(item.price._hex)
-                )
-              }
-            >
-              Buy
-            </Button>
-          </GridItem>
-        ))}
-      </Grid>
+      {loading ? (
+        <Text>Transaction Processing...</Text>
+      ) : (
+        <Grid templateColumns="repeat(3, 1fr)" gap={6}>
+          {onSaleNfts.map((item) => (
+            <GridItem w="100%" h="100%" border="1px" p="2">
+              <Text>{item.id._hex}</Text>
+              <Text>{item.vender.slice(0, 10)}</Text>
+              <Text>{ethers.utils.formatEther(item.price._hex)}</Text>
+              <Button
+                onClick={() =>
+                  handleBuy(
+                    item.id._hex,
+                    ethers.utils.formatEther(item.price._hex)
+                  )
+                }
+              >
+                Buy
+              </Button>
+            </GridItem>
+          ))}
+        </Grid>
+      )}
     </VStack>
   );
 };
